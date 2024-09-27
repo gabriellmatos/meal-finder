@@ -7,11 +7,24 @@
 		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
-		<h1>Meal Finder</h1>
-		<div class="meal-container">
-			<input type="text" class="meal-finder-input" id="meal-finder-input" placeholder="Search for meals or keywords" />
-			<button class="random-meal" id="random-meal">Randomize</button>
+		<div class="container">
+			<h1>Meal Finder</h1>
+			<div class="flex">
+				<form class="flex" id="submit">
+					<input type="text" id="search" placeholder="Search for meals or keywords" />
+					<button class="search-btn" type="submit">
+						<i class="fas fa-search"></i>
+					</button>
+				</form>
+				<button class="random-btn" id="random">
+					<i class="fas fa-random"></i>
+				</button>
+			</div>
+			<div id="result-heading"></div>
+			<div id="meals" class="meals"></div>
+			<div id="single-meal"></div>
 		</div>
 		<script src="script.js"></script>
+		<script src="https://kit.fontawesome.com/3f15fefcea.js" crossorigin="anonymous"></script>
 	</body>
 </html>
