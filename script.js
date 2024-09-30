@@ -1,6 +1,6 @@
 const search = document.getElementById('search'),
 	submit = document.getElementById('submit'),
-	random = document.getElementById('random-btn'),
+	random = document.getElementById('random'),
 	mealsEl = document.getElementById('meals'),
 	resultHeading = document.getElementById('result-heading'),
 	single_mealEl = document.getElementById('single-meal');
@@ -54,7 +54,6 @@ function getMealById(mealID) {
 				const meal = data.meals[0];
 
 				addMealToDOM(meal);
-				// single_mealEl.innerHTML = data.meals[0].strInstructions;
 			}
 		});
 }
@@ -80,7 +79,7 @@ function addMealToDOM(meal) {
 				${meal.strArea ? `<p>${meal.strArea}</p>` : ''}
 			</div>
 			<div class="main">
-				<p>Instruction</p>
+				<h2>Instructions</h2>
 				${meal.strInstructions}
 				<h2>Ingredients</h2>
 				<ul>
@@ -108,4 +107,18 @@ mealsEl.addEventListener('click', (e) => {
 		const mealID = mealInfo.getAttribute('data-mealID');
 		getMealById(mealID);
 	}
+});
+
+random.addEventListener('click', () => {
+	mealsEl.innerHTML = '';
+	resultHeading.innerHTML = '';
+
+	fetch('https://www.themealdb.com/api/json/v1/1/random.php')
+		.then((res) => res.json())
+		.then((data) => {
+			console.log(data);
+			const meal = data.meals[0];
+
+			addMealToDOM(meal);
+		});
 });
